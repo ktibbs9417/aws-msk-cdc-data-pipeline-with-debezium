@@ -21,23 +21,20 @@ class MSKProvisionedStack(Stack):
     KAFA_VERSION = cdk.CfnParameter(self, 'KafkaVersion',
       type='String',
       description='Apache Kafka version',
-      default='2.8.1',
+      default='3.8.x',
       # Supported Apache Kafka versions
       # https://docs.aws.amazon.com/msk/latest/developerguide/supported-kafka-versions.html
       allowed_values=[
+        '3.9.x',
+        '3.8.x', # recommended
+        '3.7.x',
+        '3.6.0',
+        '3.5.1',
+        '3.4.0',
+        '3.3.2',
         '3.3.1',
-        '3.2.0',
-        '2.8.2',
-        '2.8.1', # recommended
-        '2.8.0',
-        '2.7.1',
-        '2.6.2',
-        '2.6.1',
-        '2.6.0',
-        '2.5.1',
-        '2.4.1.1',
-        '2.3.1',
-        '2.2.1'
+        '3.2.1',
+        '3.1.1',
       ]
     )
 
