@@ -165,6 +165,9 @@ class MSKProvisionedStack(Stack):
     self.msk_cluster_name = msk_cluster.cluster_name
     self.msk_cluster_arn = msk_cluster.ref
     self.msk_broker_node_group_info = msk_cluster.broker_node_group_info
+    # Expose security groups and subnets for KafkaConnector compatibility
+    self.msk_security_groups = msk_cluster.broker_node_group_info.security_groups
+    self.msk_subnets = msk_cluster.broker_node_group_info.client_subnets
 
 
     cdk.CfnOutput(self, 'MSKSecurityGroupID', value=sg_msk_cluster.security_group_id,

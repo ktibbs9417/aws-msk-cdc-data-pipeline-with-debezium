@@ -188,16 +188,23 @@ Create an Aurora MySQL Cluster
 
 Update the MSKProvisionedStack class located in /cdk_stacks/msk.py if an error occures in regards to the version number review the following documentation to locate the recommended KafkaVersion: https://docs.aws.amazon.com/msk/latest/developerguide/supported-kafka-versions.html
 
-Create a MSK Cluster
+Create a MSK Provisioned Cluster (a) or MSK Serverless (b)
+
+a. Run the below for MSK Provisioned (takes 20 - 25 minutes)
 <pre>
 (.venv) $ cdk deploy MSKStack
+</pre>
+
+b. Comment out lines 45 - 49 and comment in 56 - 60 to deploy MSK Serverless (takes 3-5 minutes)
+
+<pre>
+(.venv) $ cdk deploy MSKServerlessStack
 </pre>
 
 Once MSK cluster has been successfully created,
 you should update the MSK cluster configuration by running the following python scripts
 in order to grant Kinesis Data Firehose to access Amazon MSK cluster.
 
-It will take at least `20~25` minutes to update the settings.
 Please wait until the MSK cluster status is `ACTIVE`.
 
 (1) Update **Security settings**
